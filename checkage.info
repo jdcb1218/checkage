@@ -1,0 +1,12 @@
+name = Check Age
+description = Validate Age
+dependencies[] = entity
+dependencies[] = entityform
+package = Drupal Easy
+core = 7.x
+; Information added by Drupal.org packaging script on 2015-09-15
+version = "7.x-1.x-dev"
+configure = admin/config/checkage
+core = "7.x"
+project = "checkage"
+datestamp = "1442333647"

@@ -1,0 +1,56 @@
+<?php
+
+
+/**
+ * @file
+ * checkage module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function checkage_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#checkage':
+      return '<p>' . t('Configuracion modulo checkage', array('storage' => 'Configuracion modulo checkage' )) . '</p>';
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function checkage_permission() {
+  return array(
+    'administer checkage' =>  array(
+      'title' => t('Administer checkage'),
+      'description' => t('Perform administration checkage'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function checkage_menu() {
+  $items = array();
+
+  $items['admin/config/checkage'] = array(
+    'title' => t('Configuration to not see form'),
+    'description' => t('Configuration to not see form'),
+    'page callback' => 'drupal_get_form', 
+    'page arguments' => array('checkage_config'), 
+    'access callback' => TRUE,
+    'file' => 'forms/checkage.config.forms.inc',
+  );
+
+  $items['validar-edad'] = array( 
+    'description' => t('Form Check Age'),
+    'page callback' => 'drupal_get_form', 
+    'page arguments' => array('checkage_form'), 
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'forms/checkage.forms.inc',
+  );
+
+  return $items;
+}
